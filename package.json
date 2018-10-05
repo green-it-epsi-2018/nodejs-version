@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-version",
+  "version": "1.0.0",
+  "description": "\"# nodejs-version\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/green-it-epsi-2018/nodejs-version.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/green-it-epsi-2018/nodejs-version/issues"
+  },
+  "homepage": "https://github.com/green-it-epsi-2018/nodejs-version#readme"
+}
