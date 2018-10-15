@@ -1,0 +1,61 @@
+ <html>
+   <head>
+     <title>page d'envoi de fichier pour un traitement au back</title>
+   </head>
+   <body>
+     <style>
+       form{
+         margin-bottom: 0;
+       }
+       #body{
+         width: 800px;
+         margin: 0 auto;
+       }
+       h1,h2,h3,h4,h5,h6{
+         text-align: center;
+       }
+        div:not(:last-of-type){
+          margin-bottom: 150px;
+        }
+        .form, .resultat{
+          width: 500px;
+          margin: 0 auto;
+        }
+        form > label{
+          display: flex;
+          justify-content: space-between;
+          text-align: left;
+        }
+        form > label:not(:last-of-type){
+          margin-bottom: 50px;
+        }
+        .presentation, .form{
+          text-align: center;
+          border: solid black 1px;
+          padding: 15px;
+        }
+        textarea{
+          width: 100%;
+        }
+      </style>
+      <div id="body">
+     <div class="presentation">
+        <h2>page d'envoi de fichier pour un traitement au back</h2>
+        <p>
+          Ce page permet l'upload d'un fichier csv et de convertir ses valeurs en données JSON.
+        </p>
+     </div>
+     <div class="form">
+      <form method="POST" action="">
+        <label><span>Upload du fichier</span><input type="file" value="Choisir un fichier"/></label>
+        <label><span>Boutton de validation</span><input type="submit" value="Envoyer"/></label>
+      </form>
+    </div>
+    <div class="resultat">
+      <textarea>
+      <% if(typeof resultat !== 'undefined') echo resultat %>
+      </textarea>
+    </div>
+  </div>
+   </body>
+ </html>
