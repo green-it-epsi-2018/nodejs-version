@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var multer = require("multer");
 
+
 // where to store file
 const multerConf = {
     storage: multer.diskStorage({
@@ -16,16 +17,9 @@ const multerConf = {
     })
 };
 
-
-// route for uploading
-router.post("/upload", multer(multerConf).single("csvfile"), function (req, res) {
+router.post("/", multer(multerConf).single("csvfile"), function (req, res) {
     console.log(req.files);
     res.send(req.files);
-});
-
-
-router.get("/envoi-fichier", function (req, res) {
-    res.send("Page d'envoi de fichier");
 });
 
 module.exports = router;
