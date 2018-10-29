@@ -1,29 +1,18 @@
-var express = require("express");
-var router = express.Router();
-var multer = require("multer");
+var express = require('express')
+var router = express.Router()
 
+const fileFieldName = 'csvfile'
 
-// where to store file
-const multerConf = {
-    storage: multer.diskStorage({
-        destination: function (req, file, cb) {
-            cb(null, "./upload-files");
-        },
-        filename: function (req, file, cb) {
-            const ext = file.mimetype.split("/")[1];
+router.post('/upload', function (req, res) {
+  if (!(req.files || [])[fileFieldName]) {
+    res.sendStatus(400)
+  } else {
+    res.send(req.files[fileFieldName])
+  }
+})
 
-            cb(null, file.fieldname + "-" + Date.now() + "." + ext);
-        }
-    })
-};
+router.get('/envoi-fichier', function (req, res) {
+  res.render('profile', {fileFieldName})
+})
 
-router.post("/upload", multer(multerConf).single("csvfile"), function (req, res) {
-    console.log(req.files);
-    res.send(req.files);
-});
-
-router.get("/envoi-fichier", function (req, res) {
-    res.send("Page d'envoi de fichier");
-});
-
-module.exports = router;
+module.exports = router

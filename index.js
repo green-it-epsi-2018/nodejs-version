@@ -1,19 +1,18 @@
-const express = require("express");
-const fileUpload = require("express-fileupload");
-var profile = require('./profile');
+const express = require('express')
+const fileUpload = require('express-fileupload')
 
+const profile = require('./profile')
 
-const app = express();
-app.use(fileUpload());
-app.use('/', profile);
+const PORT = 3000
 
+const app = express()
+app.set('view engine', 'ejs')
+app.use(fileUpload())
 
-const PORT = 3000;
+app.get('/', (req, res) => res.render('index'))
 
-
+app.use('/', profile)
 
 app.listen(PORT, function () {
-    console.log(`NodeJS Version Perf started on port ${PORT}!`);
-});
-
-//
+  console.log(`NodeJS Version Perf started on port ${PORT}!`)
+})

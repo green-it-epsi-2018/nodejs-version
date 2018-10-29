@@ -46,14 +46,14 @@
         </p>
      </div>
      <div class="form">
-      <form method="POST" action="">
-        <label><span>Upload du fichier</span><input type="file" value="Choisir un fichier"/></label>
+      <form method="POST" action="upload" encType="multipart/form-data">
+        <label><span>Upload du fichier</span><input name="<%= fileFieldName %>" type="file" value="Choisir un fichier"/></label>
         <label><span>Boutton de validation</span><input type="submit" value="Envoyer"/></label>
       </form>
     </div>
     <div class="resultat">
       <textarea>
-      <% if(typeof resultat !== 'undefined') echo resultat %>
+      <%= typeof resultat == "undefined" ? "" : resultat %>
       </textarea>
     </div>
   </div>
