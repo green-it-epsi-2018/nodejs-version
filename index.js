@@ -2,6 +2,7 @@ const express = require('express')
 const fileUpload = require('express-fileupload')
 
 const envoiTraitement = require('./envoiTraitement')
+const uploadListe = require('./uploadListe')
 
 const PORT = 3000
 
@@ -10,7 +11,8 @@ app.set('view engine', 'ejs')
 app.use(fileUpload())
 
 const modulesToLoad = [
-	['envoi-traitement', "Envoi d'un fichier au traitement back", envoiTraitement]
+	['envoi-traitement', "Envoi d'un fichier au traitement back", envoiTraitement],
+	['upload-list', "Upload d'une list de données, ensuite affichée dans un tableau", uploadListe],
 ]
 
 const moduleRouterLoad = modulesToLoad.map((moduleArray) => {

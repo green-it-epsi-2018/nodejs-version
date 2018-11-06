@@ -1,0 +1,70 @@
+ <html>
+   <head>
+     <title>page d'envoi de fichier pour être ensuite affiché dans un tableau HTML</title>
+   </head>
+   <body>
+     <style>
+       form{
+         margin-bottom: 0;
+       }
+       #body{
+         width: 800px;
+         margin: 0 auto;
+       }
+       h1,h2,h3,h4,h5,h6{
+         text-align: center;
+       }
+        div:not(:last-of-type){
+          margin-bottom: 150px;
+        }
+        .form{
+          width: 500px;
+          margin: 0 auto;
+        }
+		.resultat{
+			width: auto;
+			margin: 0 auto;
+		}
+        form > label{
+          display: flex;
+          justify-content: space-between;
+          text-align: left;
+        }
+        form > label:not(:last-of-type){
+          margin-bottom: 50px;
+        }
+        .presentation, .form{
+          text-align: center;
+          border: solid black 1px;
+          padding: 15px;
+        }
+      </style>
+      <div id="body">
+     <div class="presentation">
+        <h2>page d'envoi de fichier pour être ensuite affiché dans un tableau HTML</h2>
+        <p>
+          Cette page sert a démontrer le temps que met la page a afficher les données dans un tableau HTML
+        </p>
+     </div>
+	 <% if(typeof data !== 'object') { %>
+     <div class="form">
+	 <form method="POST" action="<%= modulePath %>/upload" encType="multipart/form-data">
+        <label><span>Upload du fichier</span><input name="<%= fileFieldName %>" type="file" value="Choisir un fichier"/></label>
+        <label><span>Boutton de validation</span><input type="submit" value="Envoyer"/></label>
+      </form>
+	  </div>
+	  <% } else { %>
+	  <table class="resultat">
+	  <% data.forEach(line => { %>
+	  <tr>
+		<% line.forEach(cell => { %>
+		<td><%= cell %></td>
+		<% }) %>
+	  </tr>
+	  <% }) %>
+	  </table>
+	<% } %>
+    </div>
+  </div>
+   </body>
+ </html>
