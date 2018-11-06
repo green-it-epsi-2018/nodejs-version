@@ -3,8 +3,10 @@
      <title>page d'envoi de fichier pour un traitement au back</title>
    </head>
    <body>
-	   <div>
-		<a href="/envoi-fichier">envoi de fichier</a>
+		<% moduleRouterLoad.forEach((module) =>	{ %>
+		<div>
+			<a href="/<%= module[0] %>"> <%= module[1] %> </a>
 	   </div>
+		<% }) %>
    </body>
   </html>

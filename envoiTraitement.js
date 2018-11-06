@@ -11,8 +11,8 @@ router.post('/upload', function (req, res) {
   }
 })
 
-router.get('/envoi-fichier', function (req, res) {
-  res.render('profile', {fileFieldName})
+router.get('/', function (req, res) {
+  res.render('envoi-traitement', {fileFieldName, modulePath: req.baseUrl})
 })
 
 module.exports = router

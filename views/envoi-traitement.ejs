@@ -34,9 +34,6 @@
           border: solid black 1px;
           padding: 15px;
         }
-        textarea{
-          width: 100%;
-        }
       </style>
       <div id="body">
      <div class="presentation">
@@ -46,15 +43,10 @@
         </p>
      </div>
      <div class="form">
-      <form method="POST" action="upload" encType="multipart/form-data">
+      <form method="POST" action="<%= modulePath %>/upload" encType="multipart/form-data">
         <label><span>Upload du fichier</span><input name="<%= fileFieldName %>" type="file" value="Choisir un fichier"/></label>
         <label><span>Boutton de validation</span><input type="submit" value="Envoyer"/></label>
       </form>
-    </div>
-    <div class="resultat">
-      <textarea>
-      <%= typeof resultat == "undefined" ? "" : resultat %>
-      </textarea>
     </div>
   </div>
    </body>
