@@ -1,12 +1,16 @@
- <html>
-   <head>
-     <title>page d'envoi de fichier pour un traitement au back</title>
-   </head>
-   <body>
-		<% moduleRouterLoad.forEach((module) =>	{ %>
-		<div>
-			<a href="/<%= module[0] %>"> <%= module[1] %> </a>
-	   </div>
-		<% }) %>
-   </body>
-  </html>
+<html>
+
+<head>
+  <title>page d'envoi de fichier pour un traitement au back</title>
+</head>
+
+<body>
+  <% moduleRouterLoad.forEach((module) =>	{ %>
+  <div>
+    <a href="/<%= module[0] %>">
+      <%= module[1] %> </a>
+  </div>
+  <% }) %>
+</body>
+
+</html>
