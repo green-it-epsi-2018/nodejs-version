@@ -1,6 +1,14 @@
  <html>
    <head>
      <title>page d'envoi de fichier pour être ensuite affiché dans un tableau HTML</title>
+	 <script>
+	 let beginDate;
+	 window.onload = () => {
+	const endDate = + new Date()
+	console.log(beginDate, endDate, (endDate - beginDate)/1000 + "s")
+	}
+	beginDate = + new Date()
+	</script>
    </head>
    <body>
      <style>
@@ -46,7 +54,7 @@
           Cette page sert a démontrer le temps que met la page a afficher les données dans un tableau HTML
         </p>
      </div>
-	 <% if(typeof data !== 'object') { %>
+	 <% if(typeof data !== 'string') { %>
      <div class="form">
 	 <form method="POST" action="<%= modulePath %>/upload" encType="multipart/form-data">
         <label><span>Upload du fichier</span><input name="<%= fileFieldName %>" type="file" value="Choisir un fichier"/></label>
@@ -54,14 +62,23 @@
       </form>
 	  </div>
 	  <% } else { %>
-	  <table class="resultat">
-	  <% data.forEach(line => { %>
-	  <tr>
-		<% line.forEach(cell => { %>
-		<td><%= cell %></td>
-		<% }) %>
-	  </tr>
-	  <% }) %>
+	  <table id="table" class="resultat"></table>
+	  <script>
+	  let data = `<%= data %>`
+	  const table = document.getElementById('table')
+	  data = data.split('\n')
+	  console.log( data.length + " lines")
+	  data = data.map((line) => line.split(';'))
+	  data.forEach(line => {
+		let tr = document.createElement('tr')
+		line.forEach((cell) => {
+			let td = document.createElement('td')
+			td.innerText = cell
+			tr.appendChild(td)
+		})
+		table.appendChild(tr)
+	  })
+	  </script>
 	  </table>
 	<% } %>
     </div>

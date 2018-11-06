@@ -8,7 +8,7 @@ router.post('/upload', function (req, res) {
     res.sendStatus(400)
   } else {
 	  try {
-	const data = req.files[fileFieldName].data.toString('utf8').split('\n').map((line)=>line.split(';'))
+	const data = req.files[fileFieldName].data.toString('utf8')
 	  res.render('upload-liste', {fileFieldName, modulePath: req.baseUrl, data})
 	} catch (e) {
 		console.error(e)
