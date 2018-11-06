@@ -17,6 +17,9 @@
         div:not(:last-of-type){
           margin-bottom: 150px;
         }
+		.resultat div:not(:last-of-type){
+          margin-bottom: 15px;
+        }
         .form, .resultat{
           width: 500px;
           margin: 0 auto;
@@ -42,12 +45,28 @@
           Ce page permet l'upload d'un fichier csv et de convertir ses valeurs en données JSON.
         </p>
      </div>
+	 <% if(typeof data === 'undefined') { %>
      <div class="form">
       <form method="POST" action="<%= modulePath %>/upload" encType="multipart/form-data">
         <label><span>Upload du fichier</span><input name="<%= fileFieldName %>" type="file" value="Choisir un fichier"/></label>
         <label><span>Boutton de validation</span><input type="submit" value="Envoyer"/></label>
       </form>
     </div>
+	<% } else { %>
+	<script>
+	 let beginDate;
+	 window.onload = () => {
+	const endDate = + new Date()
+	console.log(beginDate, endDate, (endDate - beginDate)/1000 + "s")
+	}
+	beginDate = + new Date()
+	</script>
+	<div class="resultat">
+	<% data.forEach((hash) => { %>
+		<div><%= hash %></div>
+	<% }) %>
+	</div>
+	<% } %>
   </div>
    </body>
  </html>
