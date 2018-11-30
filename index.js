@@ -3,6 +3,7 @@ const fileUpload = require('express-fileupload')
 
 const envoiTraitement = require('./envoiTraitement')
 const uploadListe = require('./uploadListe')
+const pageWebservice = require('./page-webservice')
 
 const PORT = 3000
 
@@ -13,6 +14,7 @@ app.use(fileUpload())
 const modulesToLoad = [
   ['envoi-traitement', "Envoi d'un fichier au traitement back", envoiTraitement],
   ['upload-list', "Upload d'une list de données, ensuite affichée dans un tableau", uploadListe],
+  ['page-webservice', "Requettes massives vers une api", pageWebservice],
 ]
 //app.use(express.static('/Users/Tshili/Documents/Epsi/Green-IT/nodejs-version/pics'));
 

@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <title>Page d'envoi de webservices en masse</title>
+  </head>
+  <body>
+    <style>
+      form{
+        margin-bottom: 0;
+      }
+      #body{
+        width: 800px;
+        margin: 0 auto;
+      }
+      h1,h2,h3,h4,h5,h6{
+        text-align: center;
+      }
+      div:not(:last-of-type){
+        margin-bottom: 150px;
+      }
+      .resultat div:not(:last-of-type){
+        margin-bottom: 15px;
+      }
+      .form, .resultat{
+        width: 500px;
+        margin: 0 auto;
+      }
+      form > label{
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+      }
+      form > label:not(:last-of-type){
+        margin-bottom: 50px;
+      }
+      .presentation, .form{
+        text-align: center;
+        border: solid black 1px;
+        padding: 15px;
+      }
+
+      div > input{
+        margin-left: 50px;
+      }
+    </style>
+    <div id="body">
+      <div class="presentation">
+        <h2>Page d'envoi de webservices en masse</h2>
+        <p>Ce page permet d'envoyer un nombre massif de requette api pour vérifier l'efficience des modules</p>
+      </div>
+      <div>
+        <div>Valeur max de la probabilité :<input id="maxRandom" type="number" min="1" value="50"/></div>
+        <div>Nombre de requètes API :<input id="nmbIterations" type="number" min="1" value="50"/></div>
+        <div><button onclick="startApiCall()">Lancer les appels</button></div>
+      </div>
+      <script>
+      const startApiCall = () => {
+        const maxProba = +document.getElementById('maxRandom').value
+        const nbCalls = +document.getElementById('nmbIterations').value
+        const startDate = new Date().getTime()
+
+        Promise.all(Array(nbCalls).fill().map(() => fetch("<%= apiCallAdress %>/"+maxProba)))
+        .then((responses) => Promise.all(responses.map(response => response.json())))
+        .then((jsons) => jsons.map(json => json.value))
+        .then((values) => {
+          const avg = values.reduce((acc, curr) => acc = acc + (curr / values.length), 0)
+          console.log(avg)
+        })
+        .then(() => console.log(startDate, new Date().getTime(), ((new Date().getTime() - startDate) / 1000) + "s"))
+      }
+      </script>
+    </div>
+  </body>
+</html> 
