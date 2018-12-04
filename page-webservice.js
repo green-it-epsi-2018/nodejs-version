@@ -13,7 +13,7 @@ router.get('/api/:max', (req, res) => {
   const max = req.params.max
 
   const rand = Math.random() * max
-  setTimeout(() => res.send(JSON.stringify({ value: rand })), (rand / 100) * 1000)
+  res.send(JSON.stringify({ value: rand }))
 })
 
 module.exports = router

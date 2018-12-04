@@ -18,12 +18,17 @@
   },
   "homepage": "https://github.com/green-it-epsi-2018/nodejs-version#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "csvtojson": "^2.0.8",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-fileupload": "^1.0.0-alpha.1",
+<<<<<<< HEAD
     "fs-extra": "^7.0.1",
     "js-sha256": "^0.9.0",
     "nodemon": "^1.18.4"
+=======
+    "js-sha256": "^0.9.0"
+>>>>>>> c5824e2f861c742ca8c6f3258f894453740867dc
   }
 }
