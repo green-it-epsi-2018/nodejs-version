@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <title>page d'envoi d'image</title>
+</head>
+
+<body>
+    <style>
+        form {
+            margin-bottom: 0;
+        }
+
+        #body {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            text-align: center;
+        }
+
+        div:not(:last-of-type) {
+            margin-bottom: 150px;
+        }
+
+        .resultat div:not(:last-of-type) {
+            margin-bottom: 15px;
+        }
+
+        .form,
+        .resultat {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        form>label {
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        form>label:not(:last-of-type) {
+            margin-bottom: 50px;
+        }
+
+        .presentation,
+        .form {
+            text-align: center;
+            border: solid black 1px;
+            padding: 15px;
+        }
+    </style>
+    <div id="body">
+        <div class="presentation">
+            <h2>page d'envoi d'image pour un traitement au back</h2>
+            <p>
+                Ce page permet charger des images
+            </p>
+        </div>
+
+        <% for(var i=0; i<pics.length; i++) { %>
+        <img class="fit-picture" src="data:image/png;base64, <%- pics[i] %>" alt="Grapefruit slice atop a pile of other slices" />
+        <% } %>
+
+
+
+    </div>
+    <script>
+        const beginDate = new Date(<%= startDate %>)
+        window.onload = () => {
+            const endDate = +new Date()
+            console.log(beginDate, endDate, (endDate - beginDate) / 1000 + "s")
+        }
+    </script>
+</body>
+
+</html>
